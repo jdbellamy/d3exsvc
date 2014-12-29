@@ -1,4 +1,4 @@
-d3exsrv
+d3exsvc
 =======
 
 D3 Example Service Endpoint
@@ -25,7 +25,7 @@ States
 Endpoint Address: http://d3exsrv-41573.onmodulus.net/api/states
 
 ```bash
-## GET api home 
+## GET api home
 curl -X GET http://d3exsrv-41573.onmodulus.net/api
 
 ## GET all states
