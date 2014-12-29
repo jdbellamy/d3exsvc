@@ -1,6 +1,8 @@
 d3exsvc
 =======
 
+[ ![Codeship Status for jdbellamy/d3exsvc](https://codeship.com/projects/e5151130-714a-0132-fc4d-62f5102d8589/status?branch=master)](https://codeship.com/projects/54590)
+
 D3 Example Service Endpoint
 http://d3exsvc-41577.onmodulus.net/api/
 
