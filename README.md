@@ -102,3 +102,30 @@ curl -X POST -H "Content-Type: application/json" -d '{
   "freq": { "low": 797, "mid": 1849, "high": 1534 }
 }' http://d3ex.mod.bz/api/states
 ```
+
+``` bash
+curl -X POST -H "Content-Type: application/json" -d '{
+  "date":20111001,"newYork":63.4,"sanFrancisco":62.7,"austin":72.2
+}' http://d3ex.mod.bz/api/temps
+curl -X POST -H "Content-Type: application/json" -d '{
+  "date":20111002,"newYork":58,  "sanFrancisco":59.9,"austin":67.7
+}' http://d3ex.mod.bz/api/temps
+curl -X POST -H "Content-Type: application/json" -d '{
+"date":20111003,"newYork":53.3,"sanFrancisco":59.1,"austin":69.4
+}' http://d3ex.mod.bz/api/temps
+curl -X POST -H "Content-Type: application/json" -d '{
+"date":20111004,"newYork":55.7,"sanFrancisco":58.8,"austin":68
+}' http://d3ex.mod.bz/api/temps
+curl -X POST -H "Content-Type: application/json" -d '{
+"date":20111005,"newYork":64.2,"sanFrancisco":58.7,"austin":72.4
+}' http://d3ex.mod.bz/api/temps
+curl -X POST -H "Content-Type: application/json" -d '{
+"date":20111006,"newYork":58.8,"sanFrancisco":57,  "austin":77  
+}' http://d3ex.mod.bz/api/temps
+curl -X POST -H "Content-Type: application/json" -d '{
+"date":20111007,"newYork":57.9,"sanFrancisco":56.7,"austin":82.3  
+}' http://d3ex.mod.bz/api/temps
+curl -X POST -H "Content-Type: application/json" -d '{  
+"date":20111008,"newYork":61.8,"sanFrancisco":56.8,"austin":78.9
+}' http://d3ex.mod.bz/api/temps
+```

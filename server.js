@@ -28,6 +28,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://jdbellamy:openmongo@ds047950.mongolab.com:47950/d3exdb');
 var State = require('./app/models/state');
+var Temp = require('./app/models/temp')
 // middleware to use for all requests
 router.use(function(req, res, next) {
   console.log('router event');
@@ -36,7 +37,7 @@ router.use(function(req, res, next) {
 // test route to make sure everything is working
 // (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-  res.json({ message: 'available apis: [/api/states]' });
+  res.json({ message: 'available apis: [ states, temps ]' });
 });
 // on routes that end in /states
 router.route('/states')
@@ -93,7 +94,7 @@ router.route('/states')
         state.save(function(err) {
           if (err)
             res.send(err);
-            res.json({ message: 'State updated!' });
+            res.json({ message: 'state updated!' });
         });
     });
   });
@@ -106,18 +107,18 @@ router.route('/states')
     }, function(err, state) {
       if (err)
         res.send(err);
-        res.json({ message: 'Successfully deleted' });
+        res.json({ message: 'successfully deleted' });
     });
   });
   // on routes that end in /temps
   router.route('/temps')
   // create a temp (accessed at POST http://localhost:8080/api/temps)
   .post(function(req, res) {
-    var temp = new temp();
-    temp.temp = req.body.temp;
-    temp."New York" = req.body."New York";
-    temp."San Francisco" = req.body."San Francisco";
-    temp."Austin" = req.body."Austin";
+    var temp = new Temp();
+    temp.date = req.body.date;
+    temp.newYork = req.body.newYork;
+    temp.sanFrancisco = req.body.sanFrancisco;
+    temp.austin = req.body.austin;
     temp.oid = req.body._id;
     temp.ver = req.body.__v;
     // save the temp and check for errors
@@ -130,10 +131,10 @@ router.route('/states')
   router.route('/temps')
   // get all the temps (accessed at GET http://localhost:8080/api/temps)
   .get(function(req, res) {
-    temp.find(function(err, temps) {
+    Temp.find(function(err, temp) {
       if (err)
         res.send(err);
-        res.json(temps);
+        res.json(temp);
     });
   });
   // on routes that end in /temps/:temp_id
@@ -141,7 +142,7 @@ router.route('/states')
   // get the temp with that id
   // (accessed at GET http://localhost:8080/api/temps/:temp_id)
   .get(function(req, res) {
-    temp.findById(req.params.temp_id, function(err, temp) {
+    Temp.findById(req.params.temp_id, function(err, temp) {
       if (err)
         res.send(err);
         res.json(temp);
@@ -156,7 +157,7 @@ router.route('/states')
       if (err)
         res.send(err);
         // update the temps info
-        temp.name = req.body.name;
+        temp.date = req.body.date;
         // save the temp
         temp.save(function(err) {
           if (err)
@@ -169,12 +170,12 @@ router.route('/states')
   // delete the temp with this id
   // (accessed at DELETE http://localhost:8080/api/temps/:temp_id)
   .delete(function(req, res) {
-    temp.remove({
+    Temp.remove({
       _id: req.params.temp_id
     }, function(err, temp) {
       if (err)
         res.send(err);
-        res.json({ message: 'Successfully deleted' });
+        res.json({ message: 'successfully deleted' });
     });
   });
   // REGISTER OUR ROUTES
